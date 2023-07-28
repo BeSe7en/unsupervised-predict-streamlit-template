@@ -45,7 +45,7 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System","Welcome", "Predictive Insights", "Process", "In a Nutshell" ]
+    page_options = ["Recommender System", "About Us", "Process", "In a Nutshell" ]
 
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
@@ -100,25 +100,18 @@ def main():
     # -------------------------------------------------------------------
 
     # ------------- SAFE FOR ALTERING/EXTENSION -------------------
-    if page_selection == "Predictive Insights":
-        st.title("Predictive Insights")
-        st.write("## About Us")
+    if page_selection == "About Us":
+        st.image('resources/imgs/Predictive Insights.png')
+        col1, col2 = st.columns([3, 3])
+        # with col1:
+        #     st.image(image, use_column_width=True)
+        
+        st.title("Predictive Insights Movie Recommende  Web App")
         st.write("Predictive Insights is a renowned data-based agency that has been on the scene for over a decade. We strive to put our best foot forward with every project we tackle. Our mission is to provide a service that goes above and beyond your expectations.")
-        about = st.sidebar.checkbox("About Us")
-        team = st.sidebar.checkbox("Team Members")
-    if team:
-        st.subheader("Our Team")
-        st.markdown("Thato Molapisi, CEO")
-        st.markdown("Bongokuhle Dladla, Team Lead")
-        st.markdown("Dominick Bardo")
-
-    if page_selection == "Welcome":
-        st.title("Welcome to your Movie Recommender App")
-
-        # st.image('Images/Cinema.jpg',width = 640)
-
+        st.write('To access the codebase for this application, please visit the following GitHub repository: https://github.com/Thato-Mo/unsupervised-predict-streamlit-template')
+        
         st.write("The aim for this application is to give users the ability to discover new movies based on their 3 favourite movies.")
-        team = st.sidebar.checkbox("Meet the Team")
+        
         about = st.sidebar.checkbox("About")
         if about:
             
@@ -137,18 +130,7 @@ def main():
                         three favorite movies. By taking input from the user about their preferences,\
                         the app generates a curated list of recommended movies, offering an excellent opportunity\
                         for users to discover new and exciting content to watch.")
-        if team:
-            st.subheader("**DN!**")
         
-        # st.image("Images/group_member.png", use_column_width=True)
-            st.markdown("* Domincick Bardo- Team scientist")
-            st.markdown("* enter memeber name")
-            st.markdown("* enter memeber name")
-            st.markdown("* enter memeber name")
-            st.markdown("* enter memeber name")
-
-            st.subheader("**CEO**")
-            st.write("who is the ceo")
 
             
     if page_selection == "In a Nutshell":
@@ -183,10 +165,10 @@ def main():
         source = st.sidebar.checkbox("Data Source")
         if source:
             st.subheader("Where did we get the data from?")
-            st.image('Images/download.jpg', use_column_width =False)
-            st.markdown("The data was obtained from the MovieLens \
+            # st.image('Images/download.jpg', use_column_width =False)
+            st.markdown("The data was obtained from the Kaggle which included data legally scraped from MovieLens and IMBD\
             which has the several millions 5-star ratings obtained from users using the online recommendation system.\
-            The IMBD (imbd_df) was legally scraped from IMDB.")
+            ")
 
         look = st.sidebar.checkbox("Data")
         if look:
@@ -202,14 +184,14 @@ def main():
         user = st.sidebar.checkbox("User analysis")
         if user:
             st.subheader("Insights from users")
-            st.image('Images/user_analysis.png', width = 720)
-            st.markdown("These graphs show the density plots of the average rating of users and the number of movies per user.\
-                        What is observed that most of the users rated the movies an avg of 3.5 and most users watched less than 500 movies")
+            st.image('resources/imgs/ratings.png', width = 720)
+            st.markdown("We were able to determine the frequency of the average rating per users.\
+                        We found most of the users rated the movies a 4 stars, BUT an average of 3.5 stars was found across of all movies.Further investagtion also informed us that most users watched less than 500 movies")
         movies = st.sidebar.checkbox("Movie analysis")
         if movies:
             st.subheader("Insights from Movies")
-            st.image('Images/wordcloud.jpg', use_column_width=False)
-            st.markdown("These are most common genres in the dataset!")
+            st.image('resources/imgs/output.png', use_column_width=False)
+            st.markdown("These are most common plot kewords found in the dataset! This shows what types of shows the users most enjoyed.")
 
         st.sidebar.subheader("Modelling")
         model = st.sidebar.checkbox("Content-based")
@@ -221,9 +203,6 @@ def main():
                         BallTree, KDTree, and a brute-force algorithm based on routines in sklearn.metrics.pairwise.\
                         More infomation can be received here:https://scikit-learn.org/stable/modules/neighbors.html#:~:text=1.-,Unsupervised%20Nearest%20Neighbors,based%20on%20routines%20in%20sklearn.")
     
-
-
-
 
     # You may want to add more sections here for aspects such as an EDA,
     # or to provide your business pitch.
